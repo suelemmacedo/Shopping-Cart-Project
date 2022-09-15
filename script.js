@@ -24,17 +24,17 @@ const createProductImageElement = (imageSource) => {
  * @param {string} innerText - Texto do elemento.
  * @returns {Element} Elemento criado.
  */
-// Com orientações e ajudas de Melquisedeque (Megas)
+// Com orientações e ajuda de Melquisedeque (Megas)
 const button = document.getElementsByClassName('empty-cart')[0];
 const carrinho = document.getElementsByClassName('cart__items')[0];
 
 function cartItemClickListener(e) {
   e.target.remove();
 }
-function removeProducts() {
+/* function removeProducts() {
 carrinho.innerHTML = '';  
 }
-button.addEventListener('click', removeProducts);
+button.addEventListener('click', removeProducts); */
 
 const createCartItemElement = ({ id, title, price }) => {
   const li = document.createElement('li');
@@ -49,11 +49,10 @@ const createCustomElement = (element, className, innerText) => {
   if (element === 'button') {
     /* console.log('é um botão'); */
     e.addEventListener('click', async (event) => {
-    /*   carrinho.appendChild(event.target.parentNode); */
     const id = event.target.parentNode.firstChild.innerText;
     const results = await fetchItem(id);
     createCartItemElement(results);
-    console.log(createCartItemElement(results));
+    /* console.log(createCartItemElement(results)); */
     carrinho.appendChild(createCartItemElement(results));
     /* console.log(results);
     console.log(event.target.parentNode.firstChild.innerText); */
