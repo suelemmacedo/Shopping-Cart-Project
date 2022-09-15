@@ -54,7 +54,7 @@ const createProductItemElement = ({ id, title, thumbnail }) => {
  * @param {Element} product - Elemento do produto.
  * @returns {string} ID do produto.
  */
-const getIdFromProductItem = (product) => product.querySelector('span.id').innerText;
+ const getIdFromProductItem = (product) => product.querySelector('span.item_id').innerText;
 
 /**
  * Função responsável por criar e retornar um item do carrinho.
@@ -72,4 +72,17 @@ const createCartItemElement = ({ id, title, price }) => {
   return li;
 };
 
-window.onload = () => { };
+async function createListProducts() {
+  const data = await fetchProducts('computador');
+  const resultados = await data.results;
+  const section = document.querySelector('.items');
+  /* console.log(resultado); */
+  
+  resultados.forEach((resultado) => {
+    section.appendChild(createProductItemElement(resultado)); 
+  });
+}
+
+window.onload = () => { 
+  createListProducts();
+};
