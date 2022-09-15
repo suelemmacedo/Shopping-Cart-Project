@@ -5,7 +5,7 @@ const fetchProducts = async (QUERY) => {
     const response = await request.json();
     return response;
   } catch (error) {
-    return error;
+    return error.message;
   }
 };
 

@@ -1,6 +1,8 @@
 // Esse tipo de comentário que estão antes de todas as funções são chamados de JSdoc,
 // experimente passar o mouse sobre o nome das funções e verá que elas possuem descrições! 
 
+/* const { fetchItem } = require("./helpers/fetchItem"); */
+
 // Fique a vontade para modificar o código já escrito e criar suas próprias funções!
 
 /**
@@ -22,8 +24,41 @@ const createProductImageElement = (imageSource) => {
  * @param {string} innerText - Texto do elemento.
  * @returns {Element} Elemento criado.
  */
+// Com orientações e ajudas de Melquisedeque (Megas)
+const button = document.getElementsByClassName('empty-cart')[0];
+const carrinho = document.getElementsByClassName('cart__items')[0];
+
+function cartItemClickListener(e) {
+  e.target.remove();
+}
+function removeProducts() {
+carrinho.innerHTML = '';  
+}
+button.addEventListener('click', removeProducts);
+
+const createCartItemElement = ({ id, title, price }) => {
+  const li = document.createElement('li');
+  li.className = 'cart__item';
+  li.innerText = `ID: ${id} | TITLE: ${title} | PRICE: $${price}`;
+  li.addEventListener('click', cartItemClickListener);
+  return li;
+};
+
 const createCustomElement = (element, className, innerText) => {
   const e = document.createElement(element);
+  if (element === 'button') {
+    /* console.log('é um botão'); */
+    e.addEventListener('click', async (event) => {
+    /*   carrinho.appendChild(event.target.parentNode); */
+    const id = event.target.parentNode.firstChild.innerText;
+    const results = await fetchItem(id);
+    createCartItemElement(results);
+    console.log(createCartItemElement(results));
+    carrinho.appendChild(createCartItemElement(results));
+    /* console.log(results);
+    console.log(event.target.parentNode.firstChild.innerText); */
+    });
+  }
   e.className = className;
   e.innerText = innerText;
   return e;
@@ -64,20 +99,14 @@ const createProductItemElement = ({ id, title, thumbnail }) => {
  * @param {string} product.price - Preço do produto.
  * @returns {Element} Elemento de um item do carrinho.
  */
-const createCartItemElement = ({ id, title, price }) => {
-  const li = document.createElement('li');
-  li.className = 'cart__item';
-  li.innerText = `ID: ${id} | TITLE: ${title} | PRICE: $${price}`;
-  li.addEventListener('click', cartItemClickListener);
-  return li;
-};
 
+const loading = document.getElementsByClassName('loading')[0];
 async function createListProducts() {
   const data = await fetchProducts('computador');
+  loading.remove();
   const resultados = await data.results;
   const section = document.querySelector('.items');
   /* console.log(resultado); */
-  
   resultados.forEach((resultado) => {
     section.appendChild(createProductItemElement(resultado)); 
   });
