@@ -1,5 +1,5 @@
 // Esse tipo de comentário que estão antes de todas as funções são chamados de JSdoc,
-// experimente passar o mouse sobre o nome das funções e verá que elas possuem descrições! 
+// experimente passar o mouse sobre o nome das funções e verá que elas possuem descrições!
 
 /* const { fetchItem } = require("./helpers/fetchItem"); */
 
@@ -24,17 +24,20 @@ const createProductImageElement = (imageSource) => {
  * @param {string} innerText - Texto do elemento.
  * @returns {Element} Elemento criado.
  */
+
 // Com orientações e ajuda de Melquisedeque (Megas)
 const button = document.getElementsByClassName('empty-cart')[0];
 const carrinho = document.getElementsByClassName('cart__items')[0];
 
 function cartItemClickListener(e) {
   e.target.remove();
+ 
 }
-/* function removeProducts() {
-carrinho.innerHTML = '';  
+function removeProducts() {
+  carrinho.innerHTML = '';
+ 
 }
-button.addEventListener('click', removeProducts); */
+button.addEventListener('click', removeProducts);
 
 const createCartItemElement = ({ id, title, price }) => {
   const li = document.createElement('li');
@@ -49,12 +52,13 @@ const createCustomElement = (element, className, innerText) => {
   if (element === 'button') {
     /* console.log('é um botão'); */
     e.addEventListener('click', async (event) => {
-    const id = event.target.parentNode.firstChild.innerText;
-    const results = await fetchItem(id);
-    createCartItemElement(results);
-    /* console.log(createCartItemElement(results)); */
-    carrinho.appendChild(createCartItemElement(results));
-    /* console.log(results);
+      const id = event.target.parentNode.firstChild.innerText;
+      const results = await fetchItem(id);
+      createCartItemElement(results);
+      /* console.log(createCartItemElement(results)); */
+      carrinho.appendChild(createCartItemElement(results));
+      saveCartItems();
+      /* console.log(results);
     console.log(event.target.parentNode.firstChild.innerText); */
     });
   }
@@ -65,7 +69,7 @@ const createCustomElement = (element, className, innerText) => {
 
 /**
  * Função responsável por criar e retornar o elemento do produto.
- * @param {Object} product - Objeto do produto. 
+ * @param {Object} product - Objeto do produto.
  * @param {string} product.id - ID do produto.
  * @param {string} product.title - Título do produto.
  * @param {string} product.thumbnail - URL da imagem do produto.
@@ -88,7 +92,8 @@ const createProductItemElement = ({ id, title, thumbnail }) => {
  * @param {Element} product - Elemento do produto.
  * @returns {string} ID do produto.
  */
- const getIdFromProductItem = (product) => product.querySelector('span.item_id').innerText;
+const getIdFromProductItem = (product) =>
+  product.querySelector('span.item_id').innerText;
 
 /**
  * Função responsável por criar e retornar um item do carrinho.
@@ -107,10 +112,10 @@ async function createListProducts() {
   const section = document.querySelector('.items');
   /* console.log(resultado); */
   resultados.forEach((resultado) => {
-    section.appendChild(createProductItemElement(resultado)); 
+    section.appendChild(createProductItemElement(resultado));
   });
 }
 
-window.onload = () => { 
+window.onload = () => {
   createListProducts();
 };
