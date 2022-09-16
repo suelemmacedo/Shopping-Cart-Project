@@ -31,11 +31,9 @@ const carrinho = document.getElementsByClassName('cart__items')[0];
 
 function cartItemClickListener(e) {
   e.target.remove();
- 
 }
 function removeProducts() {
   carrinho.innerHTML = '';
- 
 }
 button.addEventListener('click', removeProducts);
 
