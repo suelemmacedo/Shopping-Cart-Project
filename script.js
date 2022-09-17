@@ -10,7 +10,7 @@
  * @param {string} imageSource - URL da imagem.
  * @returns {Element} Elemento de imagem do produto.
  */
-const createProductImageElement = (imageSource) => {
+ const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
   img.className = 'item__image';
   img.src = imageSource;
@@ -28,12 +28,24 @@ const createProductImageElement = (imageSource) => {
 // Com orientações e ajuda de Melquisedeque (Megas)
 const button = document.getElementsByClassName('empty-cart')[0];
 const carrinho = document.getElementsByClassName('cart__items')[0];
+const totPrice = document.getElementsByClassName('total-price')[0];
+
+function totalPrice() {
+  let valorInicial = 0;
+  for (let index = 0; index < carrinho.children.length; index += 1) {
+    const price = (+carrinho.children[index].innerText.split('$')[1]);
+    valorInicial += price;
+  }
+  totPrice.innerHTML = valorInicial.toFixed(2);
+}
 
 function cartItemClickListener(e) {
   e.target.remove();
+  totalPrice();
 }
 function removeProducts() {
   carrinho.innerHTML = '';
+  totalPrice();
 }
 button.addEventListener('click', removeProducts);
 
@@ -47,6 +59,7 @@ const createCartItemElement = ({ id, title, price }) => {
 
 const adicionarItemAoLocalStorage = () => {
   saveCartItems(carrinho.innerHTML);
+  totalPrice();
 };
 const createCustomElement = (element, className, innerText) => {
   const e = document.createElement(element);
@@ -118,11 +131,11 @@ async function createListProducts() {
 }
 
 function addEvent() {
-console.log(carrinho.children);
+/* console.log(carrinho.children); */
 Array.from(carrinho.children).forEach((element) => {
-  console.log(+element.innerText.split('$')[1]);
-
+  /* console.log(+element.innerText.split('$')[1]); */
   element.addEventListener('click', cartItemClickListener);
+  totalPrice();
 });
 }
 
