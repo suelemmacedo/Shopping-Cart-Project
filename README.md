@@ -22,6 +22,8 @@ Ainda neste projeto, foi colocado em prática o desenvolvimento orientado a test
 <p></p> 
 <img align="center" alt="Suelem-Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
 <img align="center" alt="Node-Logo" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"></a>
+<img align="center" alt="Suelem-HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+<img align="center" alt="Suelem-CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
 <p></p> 
 
 <img src="https://img.shields.io/static/v1?label=Link&message=Shopping Cart&color=purple&style=for-the-badge&logo=github"/>
