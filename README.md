@@ -24,3 +24,11 @@ Ainda neste projeto, foi colocado em prática o desenvolvimento orientado a test
 <img align="center" alt="Node-Logo" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"></a>
 <p></p> 
 
+<img src="https://img.shields.io/static/v1?label=Link&message=Shopping Cart&color=purple&style=for-the-badge&logo=github"/>
+
+### <b> <a href="https://suelemmacedo.github.io/Shopping-Cart-Project/">Shopping Cart</a> </b> <br>
+
+</div>
+
+<div align="center">
+
